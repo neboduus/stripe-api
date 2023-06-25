@@ -2,7 +2,7 @@
 
 > Based on [Accept a Payment Stripe Sample](https://github.com/stripe-samples/accept-a-payment) 
 
-The core of the library resides in `/src`. The other 2 folders contain the 
+The core of the library resides in `/stripe_api`. The other 2 folders contain the 
 following: 
 
 - `flask_server`: A Flask server that exploits this library to accept a payment
@@ -13,21 +13,21 @@ following:
 
 In order to use the Stripe API you need to perform the following steps:
 
-1. Include the `third_party_api/stripe_api` package in your application.
+1. Include the `stripe_api` package in your application.
 
 2. Use the `stripe_api.create_payment_intent()` method whenever you need to
    initialize a new payment as described by the demo Flask Server implemented
-   at `third_party_api/stripe_api/flask_server/server.py`
+   at `/flask_server/server.py`
 
 3. Your Frontend Client will need to initialize the payment-
 
   - Basically we need our Frontend client to perform some specific actions
     so that Stripe is able to trust our Backend server.
   - Have a look at the HTML / JS / CSS client implemented within
-    `third_party_api/stripe_api/html_client`
+    `/html_client`
 
 4. In order to handle the Stripe Webhook Events that your application needs you have to
-   check the `EventType`s currently handled by this API in `third_party_api/stripe_api/lib/event.py`
+   check the `EventType`s currently handled by this API in `stripe_api/event.py`
    and adjust accordingly.
 
    In our case we handle only `payment_intent.succeeded`, `payment_intent.payment_failed`
@@ -49,7 +49,7 @@ In order to use the Stripe API you need to perform the following steps:
    ```
 
 5. Once you decided you want to handle a new event type you have to
-   check current event handlers in `third_party_api/stripe_api/lib/handlers.py`
+   check current event handlers in `stripe_api/handlers.py`
    and adjust accordingly.
 
    Currently, the package contains handlers only for `payment_intent.succeeded`,
@@ -73,7 +73,7 @@ In order to use the Stripe API you need to perform the following steps:
    ```
 
 6. After this configuration, you can use the Stripe API as used by the
-   demo Flask Server implemented at `third_party_api/stripe_api/flask_server/server.py`
+   demo Flask Server implemented at `/flask_server/server.py`
 
 # How to Test Stripe API?
 
