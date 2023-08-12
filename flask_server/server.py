@@ -61,7 +61,10 @@ def create_checkout_session():
                         '/stripe_success_page',
             cancel_url='https://web-app-aw.bubbleapps.io/version-571j'
                        '/stripe_success_page',
-            metadata={'customer_email': customer_email}
+            metadata={'customer_email': customer_email},
+            subscription_data={
+                "metadata": {'customer_email': customer_email}
+            }
         )
     except Exception as e:
         return str(e)
